@@ -15,7 +15,10 @@ class IdeaForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.postIdea(this.state)
+    this.props.postIdea({
+      subject: this.state.subject,
+      category: this.state.category
+    })
   };
 
   render() {
@@ -28,12 +31,14 @@ class IdeaForm extends React.Component {
               value={this.state.subject}
               name="subject"
               type="text"
+              placeholder="subject"
             />
             <input
               onChange={this.handleChange}
               value={this.state.category}
               name="category"
               type="text"
+              placeholder="category"
             />
             <button type="submit">
               Create an Idea

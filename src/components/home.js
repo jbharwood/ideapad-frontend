@@ -34,14 +34,19 @@ class Home extends React.Component {
   postIdea = (idea) => {
     fetch(`/api/idea/`, {
       method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
       headers: {
-        "Accept": "application/json",
-        "content": "application/json"
+          "Content-Type": "application/json; charset=utf-8",
       },
-      body: JSON.stringify({
-        subject: idea.subject,
-        category: idea.category
-      })
+      redirect: "follow",
+      referrer: "no-referrer",
+      body: JSON.stringify(idea)
+    })
+    .then(r => r.json())
+    .then(r => {
+      
     })
   }
 
