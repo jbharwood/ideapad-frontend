@@ -11,18 +11,6 @@ class Home extends React.Component {
 
   fetchIdeas = () => {
     fetch(`/api/idea`)
-    // fetch(`http://localhost:3000/api/idea`, {'mode': 'no-cors'})
-    // fetch(`http://localhost:3000/api/idea`, {
-    //     mode: "no-cors",
-    // })
-    // fetch(`http://localhost:3000/api/idea`, {
-    //       method: 'GET',
-    //       mode: "no-cors",
-    //       headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //       }
-    //     })
     .then(r => r.json())
     .then(i => {
       this.setState({
@@ -46,22 +34,26 @@ class Home extends React.Component {
     })
     .then(r => r.json())
     .then(r => {
-      
+
     })
   }
 
-  postContent = (idea) => {
+  postContent = (content) => {
     fetch(`/api/content/`, {
       method: "POST",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
       headers: {
-        "Accept": "application/json",
-        "content": "application/json"
+          "Content-Type": "application/json; charset=utf-8",
       },
-      body: JSON.stringify({
-        idea_id: idea.idea_id,
-        post: idea.content,
-        audio: idea.audio
-      })
+      redirect: "follow",
+      referrer: "no-referrer",
+      body: JSON.stringify(content)
+    })
+    .then(r => r.json())
+    .then(r => {
+      debugger
     })
   }
 

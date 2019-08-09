@@ -20,7 +20,11 @@ class ContentForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.postContent(this.state)
+    this.props.postContent({
+      idea_id: this.state.idea_id,
+      post: this.state.post,
+      audio: this.state.audio
+    })
   };
 
   render() {
