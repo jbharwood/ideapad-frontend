@@ -3,8 +3,12 @@ import Content from './Content.js';
 
 class Idea extends React.Component {
 
+  state = {
+    ideaClicked: false
+  }
+
   renderContents = () => {
-    if (!!this.props.idea) {
+    if (this.state.ideaClicked === true) {
       return this.props.idea.contents.map(content => {
         return (
           <ul>
@@ -15,11 +19,16 @@ class Idea extends React.Component {
     }
   }
 
+  displayContent = () => {
+    if (!!this.props.idea) {
+      this.setState({ideaClicked: !this.state.ideaClicked})
+    }
+  }
+
   render() {
     return (
       <div className="idea">
-        <li>{this.props.idea.subject}</li>
-        <li>{this.props.idea.category}</li>
+        <li onClick={this.displayContent}>{this.props.idea.subject}</li>
         {this.renderContents()}
       </div>
     )
