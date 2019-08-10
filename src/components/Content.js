@@ -4,9 +4,9 @@ class Content extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.props.content.post}<br/>
-        {this.props.content.audio}
+      <div classname="content">
+        <li>{this.props.content.post}</li>
+        <li>{this.props.content.audio}</li>
       </div>
     )
   }

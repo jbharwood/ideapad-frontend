@@ -34,7 +34,7 @@ class Home extends React.Component {
     })
     .then(r => r.json())
     .then(r => {
-
+      this.fetchIdeas()
     })
   }
 
@@ -53,14 +53,18 @@ class Home extends React.Component {
     })
     .then(r => r.json())
     .then(r => {
-      debugger
+      this.fetchIdeas()
     })
   }
 
   renderIdeas = () => {
     if (this.state.ideas.length > 0) {
       return this.state.ideas.map(idea => {
-        return <Idea idea={idea}/>
+        return (
+          <ul>
+            <Idea idea={idea}/>
+          </ul>
+        )
       })
     }
   }
@@ -73,10 +77,12 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>Ideapad</h1>
-        <IdeaForm postIdea={this.postIdea}/>
-        <ContentForm postContent={this.postContent}/>
-        {this.renderIdeas()}
+        <div className="home">
+          <h1>Ideapad</h1>
+          <IdeaForm postIdea={this.postIdea}/>
+          <ContentForm postContent={this.postContent}/>
+          {this.renderIdeas()}
+        </div>
       </div>
     )
   }

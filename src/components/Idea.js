@@ -6,16 +6,20 @@ class Idea extends React.Component {
   renderContents = () => {
     if (!!this.props.idea) {
       return this.props.idea.contents.map(content => {
-        return <Content content={content}/>
+        return (
+          <ul>
+            <Content content={content}/>
+          </ul>
+        )
       })
     }
   }
 
   render() {
     return (
-      <div>
-        <h2>{this.props.idea.subject}</h2>
-        <p>{this.props.idea.category}</p>
+      <div className="idea">
+        <li>{this.props.idea.subject}</li>
+        <li>{this.props.idea.category}</li>
         {this.renderContents()}
       </div>
     )
