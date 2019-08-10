@@ -21,7 +21,7 @@ class ContentForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.postContent({
-      idea_id: this.state.idea_id,
+      idea_id: this.props.idea.id,
       post: this.state.post,
       audio: this.state.audio
     })
@@ -32,13 +32,6 @@ class ContentForm extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit} action="">
           <div>
-            <input
-              onChange={this.handleChange}
-              value={this.state.idea_id}
-              name="idea_id"
-              type="text"
-              placeholder="idea_id"
-            />
             <input
               onChange={this.handleChange}
               value={this.state.post}

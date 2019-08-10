@@ -1,6 +1,6 @@
 import React from "react";
 import IdeaForm from './IdeaForm.js';
-import ContentForm from './ContentForm.js';
+import IdeaList from './IdeaList.js';
 import Idea from './Idea.js';
 
 class Home extends React.Component {
@@ -38,38 +38,6 @@ class Home extends React.Component {
     })
   }
 
-  postContent = (content) => {
-    fetch(`/api/content/`, {
-      method: "POST",
-      mode: "cors",
-      cache: "no-cache",
-      credentials: "same-origin",
-      headers: {
-          "Content-Type": "application/json; charset=utf-8",
-      },
-      redirect: "follow",
-      referrer: "no-referrer",
-      body: JSON.stringify(content)
-    })
-    .then(r => r.json())
-    .then(r => {
-      this.fetchIdeas()
-    })
-  }
-
-  renderIdeas = () => {
-    if (this.state.ideas.length > 0) {
-      return this.state.ideas.map(idea => {
-        return (
-          <ul>
-            <Idea idea={idea}/>
-          </ul>
-        )
-      })
-    }
-  }
-
-
   componentDidMount = () => {
     this.fetchIdeas()
   }
@@ -80,8 +48,7 @@ class Home extends React.Component {
         <div className="home">
           <h1>Ideapad</h1>
           <IdeaForm postIdea={this.postIdea}/>
-          <ContentForm postContent={this.postContent}/>
-          {this.renderIdeas()}
+          <IdeaList ideas={this.state.ideas} fetchIdeas={this.fetchIdeas}/>
         </div>
       </div>
     )
