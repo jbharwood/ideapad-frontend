@@ -32,7 +32,7 @@ class ContentForm extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit} action="">
           <div>
-            <input
+            <textarea
               onChange={this.handleChange}
               value={this.state.post}
               name="post"
