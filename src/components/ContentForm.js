@@ -1,12 +1,29 @@
 import React from "react";
+import ContentEditable from "react-contenteditable";
+// import sanitizeHtml from "sanitize-html";
 
 class ContentForm extends React.Component {
 
   state = {
     idea_id: null,
     post: '',
-    audio: ''
+    audio: '',
+    html: `<p>Hello <b>World</b> !</p><p>Paragraph 2</p>`,
+    editable: true
   };
+
+  handleChange2 = evt => {
+    this.setState({ html: evt.target.value });
+  };
+
+  // sanitizeConf = {
+  //   allowedTags: ["b", "i", "em", "strong", "a", "p", "h1"],
+  //   allowedAttributes: { a: ["href"] }
+  // };
+
+  // sanitize = () => {
+  //   this.setState({ html: sanitizeHtml(this.state.html, this.sanitizeConf) });
+  // };
 
   handleChange = (e) => {
     let value = e.target.value
@@ -32,6 +49,13 @@ class ContentForm extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit} action="">
           <div>
+          <ContentEditable
+            className="editable"
+            html={this.state.html} // innerHTML of the editable div
+            disabled={!this.state.editable} // use true to disable edition
+            onChange={this.handleChange2} // handle innerHTML change
+            onBlur={this.sanitize}
+          />
             <textarea
               onChange={this.handleChange}
               value={this.state.post}
@@ -39,6 +63,7 @@ class ContentForm extends React.Component {
               type="text"
               placeholder="post"
             />
+            <br/>
             <input
               onChange={this.handleChange}
               value={this.state.audio}

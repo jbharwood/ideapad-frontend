@@ -46,7 +46,7 @@ class Home extends React.Component {
     return (
       <div>
         <div className="home">
-          <h1>Ideapad</h1>
+          <h1>IdeaPad</h1>
           <IdeaForm postIdea={this.postIdea}/>
           <IdeaList ideas={this.state.ideas} fetchIdeas={this.fetchIdeas}/>
         </div>
