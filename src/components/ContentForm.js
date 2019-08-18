@@ -12,8 +12,8 @@ class ContentForm extends React.Component {
     editable: true
   };
 
-  handleChange2 = evt => {
-    this.setState({ html: evt.target.value });
+  handleChange2 = e => {
+    this.setState({ html: e.target.value, post: e.target.value.replace(/<[^>]+>/g, '') });
   };
 
   sanitizeConf = {
@@ -43,7 +43,7 @@ class ContentForm extends React.Component {
     e.preventDefault();
     this.props.postContent({
       idea_id: this.props.idea.id,
-      post: this.state.html,
+      post: this.state.post,
       audio: this.state.audio
     })
   };
