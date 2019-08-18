@@ -25,6 +25,10 @@ class ContentForm extends React.Component {
     this.setState({ html: sanitizeHtml(this.state.html, this.sanitizeConf) });
   };
 
+  toggleEditable = () => {
+    this.setState({ editable: !this.state.editable });
+  };
+
   handleChange = (e) => {
     let value = e.target.value
     if (e.target.name === "idea_id") {
@@ -44,25 +48,38 @@ class ContentForm extends React.Component {
     })
   };
 
+  // <textarea
+  //   onChange={this.handleChange}
+  //   value={this.state.post}
+  //   name="post"
+  //   type="text"
+  //   placeholder="post"
+  // />
+
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit} action="">
           <div>
-          <ContentEditable
-            className="editable"
-            html={this.state.html} // innerHTML of the editable div
-            disabled={!this.state.editable} // use true to disable edition
-            onChange={this.handleChange2} // handle innerHTML change
-            onBlur={this.sanitize}
-          />
-            <textarea
-              onChange={this.handleChange}
-              value={this.state.post}
-              name="post"
-              type="text"
-              placeholder="post"
+            <ContentEditable
+              className="editable"
+              html={this.state.html} // innerHTML of the editable div
+              disabled={!this.state.editable} // use true to disable edition
+              onChange={this.handleChange2} // handle innerHTML change
+              onBlur={this.sanitize}
+              value={this.state.html}
             />
+            <EditButton cmd="italic" />
+            <EditButton cmd="bold" />
+            <EditButton cmd="formatBlock" arg="h1" name="heading" />
+            <EditButton
+              cmd="createLink"
+              arg="https://github.com/lovasoa/react-contenteditable"
+              name="hyperlink"
+            />
+            <button onClick={this.toggleEditable}>
+              Make {this.state.editable ? "readonly" : "editable"}
+            </button>
             <br/>
             <input
               onChange={this.handleChange}
@@ -80,4 +97,19 @@ class ContentForm extends React.Component {
     )
   }
 }
+
+function EditButton(props) {
+  return (
+    <button
+      key={props.cmd}
+      onMouseDown={evt => {
+        evt.preventDefault(); // Avoids loosing focus from the editable area
+        document.execCommand(props.cmd, false, props.arg); // Send the command to the browser
+      }}
+    >
+      {props.name || props.cmd}
+    </button>
+  );
+}
+
 export default ContentForm
