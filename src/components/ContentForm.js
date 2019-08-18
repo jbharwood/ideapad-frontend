@@ -1,6 +1,6 @@
 import React from "react";
 import ContentEditable from "react-contenteditable";
-// import sanitizeHtml from "sanitize-html";
+import sanitizeHtml from "sanitize-html";
 
 class ContentForm extends React.Component {
 
@@ -16,14 +16,14 @@ class ContentForm extends React.Component {
     this.setState({ html: evt.target.value });
   };
 
-  // sanitizeConf = {
-  //   allowedTags: ["b", "i", "em", "strong", "a", "p", "h1"],
-  //   allowedAttributes: { a: ["href"] }
-  // };
+  sanitizeConf = {
+    allowedTags: ["b", "i", "em", "strong", "a", "p", "h1"],
+    allowedAttributes: { a: ["href"] }
+  };
 
-  // sanitize = () => {
-  //   this.setState({ html: sanitizeHtml(this.state.html, this.sanitizeConf) });
-  // };
+  sanitize = () => {
+    this.setState({ html: sanitizeHtml(this.state.html, this.sanitizeConf) });
+  };
 
   handleChange = (e) => {
     let value = e.target.value
