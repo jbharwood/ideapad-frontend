@@ -43,7 +43,7 @@ class ContentForm extends React.Component {
     e.preventDefault();
     this.props.postContent({
       idea_id: this.props.idea.id,
-      post: this.state.post,
+      post: this.state.html,
       audio: this.state.audio
     })
   };
@@ -59,6 +59,17 @@ class ContentForm extends React.Component {
   render() {
     return (
       <div>
+        <EditButton cmd="italic" />
+        <EditButton cmd="bold" />
+        <EditButton cmd="formatBlock" arg="h1" name="heading" />
+        <EditButton
+          cmd="createLink"
+          arg="https://github.com/lovasoa/react-contenteditable"
+          name="hyperlink"
+        />
+        <button onClick={this.toggleEditable}>
+          Make {this.state.editable ? "readonly" : "editable"}
+        </button>
         <form onSubmit={this.handleSubmit} action="">
           <div>
             <ContentEditable
@@ -67,19 +78,8 @@ class ContentForm extends React.Component {
               disabled={!this.state.editable} // use true to disable edition
               onChange={this.handleChange2} // handle innerHTML change
               onBlur={this.sanitize}
-              value={this.state.html}
+              value={this.state.post}
             />
-            <EditButton cmd="italic" />
-            <EditButton cmd="bold" />
-            <EditButton cmd="formatBlock" arg="h1" name="heading" />
-            <EditButton
-              cmd="createLink"
-              arg="https://github.com/lovasoa/react-contenteditable"
-              name="hyperlink"
-            />
-            <button onClick={this.toggleEditable}>
-              Make {this.state.editable ? "readonly" : "editable"}
-            </button>
             <br/>
             <input
               onChange={this.handleChange}
