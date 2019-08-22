@@ -13,6 +13,7 @@ class ContentList extends React.Component {
   }
 
   renderContent = () => {
+    if (this.props.contents.length > 0) {
       return this.props.contents.map(content => {
         return (
           <ul>
@@ -20,14 +21,20 @@ class ContentList extends React.Component {
           </ul>
         )
       })
+    } else {
+        return (
+          <ul>
+            <ContentForm idea={this.props.idea} postContent={this.props.postContent}
+              fetchIdeas={this.props.fetchIdeas}/>
+          </ul>
+        )
+    }
   }
 
   render() {
     return (
       <div>
         {this.renderContent()}
-        <ContentForm idea={this.props.idea} postContent={this.props.postContent}
-          fetchIdeas={this.props.fetchIdeas}/>
       </div>
     )
   }
