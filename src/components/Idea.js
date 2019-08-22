@@ -27,13 +27,32 @@ class Idea extends React.Component {
     })
   }
 
+  editContent = (content) => {
+    fetch(`/api/content/`, {
+      method: "PATCH",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+          "Content-Type": "application/json; charset=utf-8",
+      },
+      redirect: "follow",
+      referrer: "no-referrer",
+      body: JSON.stringify(content)
+    })
+    .then(r => r.json())
+    .then(r => {
+      this.props.fetchIdeas()
+    })
+  }
+
   renderContents = () => {
     if (this.state.ideaClicked === true) {
         return (
           <ul>
             <ContentList contents={this.props.idea.contents}
               postContent={this.postContent} idea={this.props.idea}
-              fetchIdeas={this.props.fetchIdeas}/>
+              fetchIdeas={this.props.fetchIdeas} editContent={this.editContent}/>
           </ul>
         )
     }

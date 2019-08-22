@@ -3,15 +3,9 @@ import { Markup } from 'interweave';
 
 class Content extends React.Component {
 
-  renderContent = () => {
-    if (!!this.props.content) {
-      debugger
-    }
-  }
-
   render() {
     return (
-      <div classname="content">
+      <div className="content">
         <Markup content={this.props.content.html} />
         <li>{this.props.content.audio}</li>
       </div>
