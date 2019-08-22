@@ -44,7 +44,8 @@ class ContentForm extends React.Component {
     this.props.postContent({
       idea_id: this.props.idea.id,
       post: this.state.post,
-      audio: this.state.audio
+      audio: this.state.audio,
+      html: this.state.html
     })
   };
 
