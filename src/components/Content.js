@@ -1,4 +1,5 @@
 import React from "react";
+import { Markup } from 'interweave';
 
 class Content extends React.Component {
 
@@ -11,8 +12,7 @@ class Content extends React.Component {
   render() {
     return (
       <div classname="content">
-        {this.renderContent()}
-        <li>{this.props.content.post}</li>
+        <Markup content={this.props.content.html} />
         <li>{this.props.content.audio}</li>
       </div>
     )
