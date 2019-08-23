@@ -27,8 +27,9 @@ class Idea extends React.Component {
     })
   }
 
-  editContent = (content) => {
-    fetch(`/api/content/`, {
+  editContent = (content, contentID) => {
+    debugger
+    fetch(`/api/content/${contentID}`, {
       method: "PATCH",
       mode: "cors",
       cache: "no-cache",
@@ -42,6 +43,7 @@ class Idea extends React.Component {
     })
     .then(r => r.json())
     .then(r => {
+      debugger
       this.props.fetchIdeas()
     })
   }

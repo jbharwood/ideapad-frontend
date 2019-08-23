@@ -1,5 +1,6 @@
 import React from "react";
 import ContentForm from './ContentForm.js';
+import EditForm from './EditForm.js';
 import Content from './Content.js';
 
 class ContentList extends React.Component {
@@ -17,7 +18,9 @@ class ContentList extends React.Component {
       return this.props.contents.map(content => {
         return (
           <ul>
-            <Content content={content} />
+            <EditForm idea={this.props.idea} postContent={this.props.postContent}
+              editContent={this.props.editContent} fetchIdeas={this.props.fetchIdeas}
+              content={content}/>
           </ul>
         )
       })
