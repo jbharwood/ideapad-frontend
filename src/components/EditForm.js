@@ -1,6 +1,7 @@
 import React from "react";
 import ContentEditable from "react-contenteditable";
 import sanitizeHtml from "sanitize-html";
+import Audio from './Audio.js';
 
 class EditForm extends React.Component {
 
@@ -57,6 +58,10 @@ class EditForm extends React.Component {
   //   placeholder="post"
   // />
 
+  componentDidMount = () => {
+    this.setState({html: this.props.content.html})
+  }
+
   render() {
     return (
       <div>
@@ -75,7 +80,7 @@ class EditForm extends React.Component {
           <div>
             <ContentEditable
               className="editable"
-              html={this.props.content.html} // innerHTML of the editable div
+              html={this.state.html} // innerHTML of the editable div
               disabled={!this.state.editable} // use true to disable edition
               onChange={this.handleChange2} // handle innerHTML change
               onBlur={this.sanitize}
@@ -92,6 +97,7 @@ class EditForm extends React.Component {
             <button type="submit">
               Save
             </button>
+            <Audio />
           </div>
         </form>
       </div>

@@ -12,8 +12,7 @@ class IdeaList extends React.Component {
       return this.props.ideas.map(idea => {
         return (
           <ul onClick={this.handleClick}>
-            <Idea idea={idea} fetchIdeas={this.props.fetchIdeas}
-              fetchIdeas={this.props.fetchIdeas}/>
+            <Idea idea={idea} fetchIdeas={this.props.fetchIdeas}/>
           </ul>
         )
       })

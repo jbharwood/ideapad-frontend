@@ -12,3 +12,11 @@ ul li {
     /* margin: auto; */
     margin-left: 30%
 }
+
+.button {
+  background-color: #2DC677;
+}
+
+.oscilloscope {
+  width: 60%;
+}

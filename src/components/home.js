@@ -1,7 +1,6 @@
 import React from "react";
 import IdeaForm from './IdeaForm.js';
 import IdeaList from './IdeaList.js';
-import Idea from './Idea.js';
 
 class Home extends React.Component {
 

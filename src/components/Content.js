@@ -1,5 +1,6 @@
 import React from "react";
 import { Markup } from 'interweave';
+import Audio from './Audio.js';
 
 class Content extends React.Component {
 
@@ -7,7 +8,7 @@ class Content extends React.Component {
     return (
       <div className="content">
         <Markup content={this.props.content.html} />
-        <li>{this.props.content.audio}</li>
+        <Audio />
       </div>
     )
   }

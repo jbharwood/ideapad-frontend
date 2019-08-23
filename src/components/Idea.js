@@ -1,5 +1,4 @@
 import React from "react";
-import Content from './Content.js';
 import ContentList from './ContentList.js';
 
 class Idea extends React.Component {
@@ -28,17 +27,12 @@ class Idea extends React.Component {
   }
 
   editContent = (content, contentID) => {
-    debugger
-    fetch(`/api/content/${contentID}`, {
+    let id = contentID.toString()
+    fetch(`http://localhost:3000/api/content/${id}`, {
       method: "PATCH",
-      mode: "cors",
-      cache: "no-cache",
-      credentials: "same-origin",
       headers: {
-          "Content-Type": "application/json; charset=utf-8",
+        'Access-Control-Allow-Origin': '*'
       },
-      redirect: "follow",
-      referrer: "no-referrer",
       body: JSON.stringify(content)
     })
     .then(r => r.json())

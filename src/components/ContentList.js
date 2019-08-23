@@ -1,7 +1,6 @@
 import React from "react";
 import ContentForm from './ContentForm.js';
 import EditForm from './EditForm.js';
-import Content from './Content.js';
 
 class ContentList extends React.Component {
 
