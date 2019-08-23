@@ -64,7 +64,7 @@ class EditForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="editForm">
         <EditButton cmd="italic" />
         <EditButton cmd="bold" />
         <EditButton cmd="formatBlock" arg="h1" name="heading" />

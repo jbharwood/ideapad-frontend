@@ -59,7 +59,7 @@ class ContentForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="contentForm">
         <EditButton cmd="italic" />
         <EditButton cmd="bold" />
         <EditButton cmd="formatBlock" arg="h1" name="heading" />

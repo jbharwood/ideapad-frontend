@@ -10,7 +10,15 @@
 ul li {
     width: 10%;
     /* margin: auto; */
-    margin-left: 30%
+    margin-left: 25%
+}
+
+.editForm {
+    margin-right: 15%
+}
+
+.ContentForm {
+    margin-right: 15%
 }
 
 .button {

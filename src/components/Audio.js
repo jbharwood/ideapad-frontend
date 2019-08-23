@@ -73,7 +73,6 @@ class Audio extends React.Component {
             <audio ref="audioSource" controls="controls" src={this.state.blobURL}></audio>
           </div>
           <br />
-          <br />
           <FloatingActionButton
             className="btn"
             secondary={true}
