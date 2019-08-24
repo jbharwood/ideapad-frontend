@@ -86,17 +86,11 @@ class EditForm extends React.Component {
               onBlur={this.sanitize}
               value={this.state.post}
             />
-            <br/>
-            <input
-              onChange={this.handleChange}
-              value={this.state.audio}
-              name="audio"
-              type="text"
-              placeholder="audio"
-            />
             <button type="submit">
               Save
             </button>
+            <br/>
+            <br/>
             <Audio />
           </div>
         </form>
@@ -104,6 +98,14 @@ class EditForm extends React.Component {
     )
   }
 }
+
+// <input
+//   onChange={this.handleChange}
+//   value={this.state.audio}
+//   name="audio"
+//   type="text"
+//   placeholder="audio"
+// />
 
 function EditButton(props) {
   return (

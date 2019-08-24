@@ -82,13 +82,6 @@ class ContentForm extends React.Component {
               value={this.state.post}
             />
             <br/>
-            <input
-              onChange={this.handleChange}
-              value={this.state.audio}
-              name="audio"
-              type="text"
-              placeholder="audio"
-            />
             <button type="submit">
               Create Content
             </button>
@@ -99,12 +92,20 @@ class ContentForm extends React.Component {
   }
 }
 
+// <input
+//   onChange={this.handleChange}
+//   value={this.state.audio}
+//   name="audio"
+//   type="text"
+//   placeholder="audio"
+// />
+
 function EditButton(props) {
   return (
     <button
       key={props.cmd}
       onMouseDown={evt => {
-        evt.preventDefault(); // Avoids loosing focus from the editable area
+        evt.preventDefault(); // Avoids losing focus from the editable area
         document.execCommand(props.cmd, false, props.arg); // Send the command to the browser
       }}
     >
