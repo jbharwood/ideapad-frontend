@@ -43,7 +43,6 @@ class EditForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.editContent({
-      idea_id: this.props.idea.id,
       post: this.state.post,
       audio: this.state.audio,
       html: this.state.html
