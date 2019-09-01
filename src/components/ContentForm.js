@@ -8,8 +8,7 @@ class ContentForm extends React.Component {
     idea_id: null,
     post: '',
     audio: '',
-    html: `<p>Hello <b>World</b> !</p><p>Paragraph 2</p>`,
-    editable: true
+    html: `<p>Hello <b>World</b> !</p><p>Paragraph 2</p>`
   };
 
   handleChange2 = e => {
@@ -23,10 +22,6 @@ class ContentForm extends React.Component {
 
   sanitize = () => {
     this.setState({ html: sanitizeHtml(this.state.html, this.sanitizeConf) });
-  };
-
-  toggleEditable = () => {
-    this.setState({ editable: !this.state.editable });
   };
 
   handleChange = (e) => {
@@ -68,9 +63,6 @@ class ContentForm extends React.Component {
           arg="https://github.com/lovasoa/react-contenteditable"
           name="hyperlink"
         />
-        <button onClick={this.toggleEditable}>
-          Make {this.state.editable ? "readonly" : "editable"}
-        </button>
         <form onSubmit={this.handleSubmit} action="">
           <div>
             <ContentEditable
