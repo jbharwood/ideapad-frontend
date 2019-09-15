@@ -28,7 +28,7 @@ class Idea extends React.Component {
 
   editContent = (content, contentID) => {
     let id = contentID.toString()
-    debugger
+    debugger//
     fetch(`http://localhost:3000/api/content/${id}`, {
       method: "PATCH",
       headers: {
